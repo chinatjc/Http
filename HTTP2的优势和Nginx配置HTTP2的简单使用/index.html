@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>requeset: <span id="result"></span></h1>
+	<button>按钮</button>
+	<script>
+
+		const resultDom = document.querySelector('#result');
+		var index = 0;
+
+		function active() {
+			fetch('data4')
+			.then(response => response.text())
+			.then(text => {
+				resultDom.innerHTML = text;
+			});
+		}
+
+		document.querySelector('button').onclick = function() {
+			active();
+		};
+	</script>
+</body>
+</html>
