@@ -1,0 +1,21 @@
+const http = require('http');
+const fs = require('fs');
+
+http.createServer((request, response) => {
+	let responseHead = {code: 200, options: {}};
+	let responseBody = '';
+
+	console.log(request.url);
+
+	if (request.url === '/') {
+		responseBody = fs.readFileSync('./index.html');
+		responseHead.options['content-type'] = 'text/html';
+	} else if (request.url === '/home') {
+		// 301 永久重定向，http标准禁止post方法重定向成为get方法
+		responseHead.code = 301;
+		responseHead.options['location'] = '/';
+	}
+
+	response.writeHead(responseHead.code, responseHead.options)
+	response.end(responseBody);
+}).listen(7777);
