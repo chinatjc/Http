@@ -6,5 +6,28 @@
 </head>
 <body>
 	<script src="./script.js"></script>
+	<script>
+
+		// 'cache-control'首部字段在请求首部中的情况
+
+		// 'cache-control': 'no-cache' 强制地向源服务器再次验证
+		fetch('./script.js', {
+			headers: {
+				'cache-control': 'no-cache'
+				'pragma': 'no-cache'
+			}
+		});
+
+		// HTTP 权威指南
+		// 'cache-control': 'max-age=<s>' 缓存无法返回缓存时间长于 s秒 的资源
+		// 'cache-control': 'max-age=0' 强制地向源服务器再次验证
+		fetch('./script.js', {
+			headers: {
+				'cache-control': 'max-age=3',
+				'pragma': 'no-cache'
+			}
+		});
+
+	</script>
 </body>
 </html>

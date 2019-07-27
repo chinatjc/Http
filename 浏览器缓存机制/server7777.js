@@ -21,7 +21,7 @@ http.createServer((request, response) => {
 		// 缓存时间：60s，
 		// max-age，出现于http1.1，最大缓存时间，相对时间，不受客户端本地时间控制
 
-		// responseHead.options['cache-control'] = 'max-age=60';
+		// responseHead.options['cache-control'] = 'max-age=9999';
 
 
 
